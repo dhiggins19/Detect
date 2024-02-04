@@ -83,7 +83,8 @@ def calculate_checksum(data):
 def send_icmp_request(dest_addr):
     try:
         progress_tracking.append(1)
-        progress_bar(target_ips, progress_tracking)
+        if not verbose:
+            progress_bar(target_ips, progress_tracking)
         icmp_socket = socket.socket(socket.AF_INET, socket.SOCK_RAW, socket.IPPROTO_ICMP)
 
         # Generate a random ICMP identifier and sequence number
